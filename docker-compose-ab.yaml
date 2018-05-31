@@ -1,0 +1,64 @@
+version: "2"
+services:
+  kafka:
+    image: spotify/kafka
+    ports:
+      - "9092:9092"
+      - "2181:2181"
+    network_mode: "host"
+ 
+  ds-dashboard:
+    image: ds-dashboard:prod
+    ports:
+      - "4200:80"
+
+#  ml1:
+#    image: denkovalenko/ml_model
+#    command: python App.py
+#    ports:
+#      - "5000:5000"
+#    networks:
+#      - custom_network
+#  model_service1:
+#    image: model_service:1.0
+#    network_mode: "host"
+#    depends_on:
+#      - kafka
+#      - ml1
+#    environment:
+#      - API_ENDPOINT=http://localhost:5000/prediction
+#      - MODEL_NAME=Champion
+
+  ml_user:
+    image: ml_user:1.0-SNAPSHOT-abtesting
+    ports:
+      - "9000:9000"
+    network_mode: "host"
+    depends_on:
+      - kafka
+
+#  user-front:
+#    image: ml-front:latest
+#    ports:
+#      - "3000:80"
+
+  rendezvous:
+##test is for testing whether consumer.poll(10) reduces CPU usage significantly
+    image: brain_server:1.0-SNAPSHOT-abtesting
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "9001:9001"
+    network_mode: "host"
+#temporary shit-fix to connect with Kafka via "localhost:9092", need to change to some bridge network
+    environment:
+      - APPLICATION_SECRET=supersecret
+    depends_on:
+      - kafka
+
+networks:
+  custom_network:
+    external : true
+#docker run --rm -p 9000:9000 --name=ml_user --net=host ml_user:1.0-SNAPSHOT 
+  
+

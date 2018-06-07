@@ -10,7 +10,7 @@ this will download docker images from Dockerhub, and start all services.
 Then, go to http://localhost:4200/ to access Dashboard.
 
 # Capabilities:
-1)Deploy scikit-learn classifier as a REST api with no coding needed. 
+1) Deploy scikit-learn classifier as a REST api with no coding needed. 
 Just upload pickle file with trained model (http://scikit-learn.org/stable/modules/model_persistence.html) to the dashboard or use one trained with AutoML on top of TPOT framework (https://automl.info/tpot/) and send requests.
 
 2) Run A/B testing of models - split traffic accross models for canary deployment.
@@ -27,6 +27,8 @@ Send business metric of model performance from your client app (such as successf
 # Features roadmap:
 - project workspaces (deploy models for different ML tasks) 
 - persistance layer 
+- generation of swagger documentation for each machine learning task project
+- API token support
 - security issues (run apps in separate network and expose ports only of rest endpoint and dashboard)
 - support for Kubernetes deployment
 

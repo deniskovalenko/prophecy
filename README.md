@@ -33,3 +33,5 @@ Send business metric of model performance from your client app (such as successf
 # Contributing 
 Pull requests are welcome, as well as feature requests and suggestions
 
+# License
+Prophecy is dual-licensed under the GNU Affero General Public License (AGPL) version 3.0, and a commercial license.

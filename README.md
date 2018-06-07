@@ -3,8 +3,9 @@ Automated machine learning training and serving.
 
 
 # Quickstart:
-install docker and docker-compose - https://docs.docker.com/compose/install/#prerequisites
-run docker-compose -f docker-compose-ab.yaml up
+ install docker and docker-compose - https://docs.docker.com/compose/install/#prerequisites
+
+ run docker-compose -f docker-compose-ab.yaml up
 
 this will download docker images from Dockerhub, and start all services.
 Then, go to http://localhost:4200/ to access Dashboard.
@@ -18,8 +19,11 @@ Send business metric of model performance from your client app (such as successf
 
 # Building from source
  Angular Dashboard - https://github.com/deniskovalenko/datascience-dashboard
+ 
  (optional) AutoML trainer - https://github.com/deniskovalenko/prophecy-trainer
+ 
  decision-making service - https://github.com/deniskovalenko/brain-server
+ 
  Client app exposing REST API for models - https://github.com/deniskovalenko/ml-service-backend
  
   
